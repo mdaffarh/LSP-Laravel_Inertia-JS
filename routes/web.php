@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -18,10 +20,36 @@ use Inertia\Inertia;
 */
 
 
+Route::get('/', function(){
+    return redirect('/home');
+});
+
 Route::get('/Home', function(){
     return redirect('/home');
 });
+
+// Route::resource('/guru', GuruController::class);
+
+// Script sesuai modul 
 Route::get('/home',[IndexController::class,'home']);
+
+Route::prefix('/guru')->group(function(){
+    Route::get('/index',[GuruController::class,'index']);
+    Route::get('/create',[GuruController::class,'create']);
+    Route::post('/store',[GuruController::class,'store']);
+    Route::get('/edit/{guru}',[GuruController::class,'edit']);
+    Route::post('/update/{guru}',[GuruController::class,'update']);
+    Route::get('/destroy/{guru}',[GuruController::class,'destroy']);
+});
+
+Route::prefix('/jurusan')->group(function(){
+    Route::get('/index',[JurusanController::class,'index']);
+    Route::get('/create',[JurusanController::class,'create']);
+    Route::post('/store',[JurusanController::class,'store']);
+    Route::get('/edit/{jurusan}',[JurusanController::class,'edit']);
+    Route::post('/update/{jurusan}',[JurusanController::class,'update']);
+    Route::get('/destroy/{jurusan}',[JurusanController::class,'destroy']);
+});
 
 Route::controller(IndexController::class)->group(function(){
     Route::post('/admin','loginAdmin');

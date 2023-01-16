@@ -17,7 +17,7 @@ export default function Layout({ children }){
             <div className="menu">
                 <b>
                     <a href="/home">HOME</a>
-                    {user?.role == "admin" ? (
+                    {/* {user?.role == "admin" ? ( */}
                         <>
                             <a href="/guru/index">GURU</a>
                             <a href="/jurusan/index">JURUSAN</a>
@@ -26,9 +26,9 @@ export default function Layout({ children }){
                             <a href="/mapel/index">MAPEL</a>
                             <a href="/mengajar/index">MENGAJAR</a>
                         </>
-                    ) : (
+                    {/* ) : ( */}
                         <a href="/nilai/index">NILAI</a>
-                    )}
+                    {/* )} */}
                     <a href="/logout">LOGOUT</a>
                 </b>
             </div>
