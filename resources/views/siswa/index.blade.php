@@ -16,6 +16,7 @@
                     <th>NIS</th>
                     <th>NAMA SISWA</th>
                     <th>JENIS KELAMIN</th>
+                    <th>ALAMAT</th>
                     <th>KELAS</th>
                     <th>PASSWORD</th> 
                     <th>ACTION</th>
