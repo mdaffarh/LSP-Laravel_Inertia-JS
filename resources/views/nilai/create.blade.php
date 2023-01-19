@@ -12,7 +12,7 @@
                         <select name="mengajar_id" id="">
                             <option value="" disabled selected></option>
                             @foreach ($mengajar as $m)
-                                <option value="{{ $m->id }}">{{ $m->guru->nama_guru }}</option>
+                                <option value="{{ $m->id }}">{{ $m->guru->nama_guru }} - {{ $m->mapel->nama_mapel }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -44,12 +44,6 @@
                     <td class="bar">UAS</td>
                     <td class="bar">
                         <input type="number" name="uas">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="bar">NA</td>
-                    <td class="bar">
-                        <input type="number" name="na">
                     </td>
                 </tr>
                 <tr>

@@ -47,12 +47,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="bar">NA</td>
-                    <td class="bar">
-                        <input type="number" name="na" value="{{ $nilai->na }}">
-                    </td>
-                </tr>
-                <tr>
                     <td colspan="2">
                         <center>
                             <input type="submit" value="Update">

@@ -47,9 +47,9 @@ class NilaiController extends Controller
             'siswa_id' => 'required',
             'uh' => 'required',
             'uts' => 'required',
-            'uas' => 'required',
-            'na' => 'required'
+            'uas' => 'required'
         ]);
+        $data_nilai['na'] = round(($request->uh + $request->uts + $request->uas) / 3 , 2) ;
 
         Nilai::create($data_nilai);
         return redirect('/nilai/index')->with('success','Data Nilai Telah Ditambahkan');
@@ -96,9 +96,9 @@ class NilaiController extends Controller
             'siswa_id' => 'required',
             'uh' => 'required',
             'uts' => 'required',
-            'uas' => 'required',
-            'na' => 'required'
+            'uas' => 'required'
         ]);
+        $data_nilai['na'] = round(($request->uh + $request->uts + $request->uas) / 3 , 2) ;
 
         $nilai->update($data_nilai);
         return redirect('/nilai/index')->with('success','Data Nilai Telah Diedit');

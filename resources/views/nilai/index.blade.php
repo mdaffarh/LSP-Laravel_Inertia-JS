@@ -14,6 +14,7 @@
                 <tr>
                     <th>NO</th>
                     <th>NAMA GURU</th>
+                    <th>NAMA MAPEL</th>
                     <th>NAMA SISWA</th>
                     <th>UH</th>
                     <th>UTS</th>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $n->mengajar->guru->nama_guru }}</td>
+                        <td>{{ $n->mengajar->mapel->nama_mapel }}</td>
                         <td>{{ $n->siswa->nama_siswa }}</td>
                         <td>{{ $n->uh }}</td>
                         <td>{{ $n->uts }}</td>
