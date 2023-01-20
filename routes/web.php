@@ -25,9 +25,9 @@ use Inertia\Inertia;
 */
 
 
-Route::get('/', function(){
-    return redirect('/home');
-});
+// Route::get('/', function(){
+//     return redirect('/home');
+// });
 
 Route::get('/Home', function(){
     return redirect('/home');
@@ -36,7 +36,15 @@ Route::get('/Home', function(){
 // Route::resource('/guru', GuruController::class);
 
 // Script sesuai modul 
-Route::get('/home',[IndexController::class,'home']);
+
+Route::controller(IndexController::class)->group(function(){
+    Route::get('/','index');
+    Route::post('/login/admin','loginAdmin');
+    Route::post('/login/siswa','loginSiswa');
+    Route::post('/login/guru','loginGuru');
+    Route::get('/home','home');
+    Route::get('/logout','logout');
+});
 
 Route::prefix('/guru')->group(function(){
     Route::get('/index',[GuruController::class,'index']);
@@ -101,12 +109,7 @@ Route::prefix('/nilai')->group(function(){
     Route::get('/destroy/{nilai}',[NilaiController::class,'destroy']);
 });
 
-Route::controller(IndexController::class)->group(function(){
-    Route::post('/admin','loginAdmin');
-    Route::post('/siswa','loginSiswa');
-    Route::post('/guru','loginGuru');
-    Route::get('/logout','logout');
-});
+
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -117,14 +120,14 @@ Route::controller(IndexController::class)->group(function(){
 //     ]);
 // });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
