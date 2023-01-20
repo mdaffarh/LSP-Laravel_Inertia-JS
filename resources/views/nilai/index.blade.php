@@ -25,22 +25,8 @@
                     @if (session('user')->role == 'guru')
                         <th>ACTION</th>
                     @endif
-                </tr>
-                @foreach ($nilai as $n)     
-                    @if (session('user')->role == 'siswa')
-                        @if (session('user')->nis == $n->siswa->nis)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $n->mengajar->guru->nama_guru }}</td>
-                                <td>{{ $n->mengajar->mapel->nama_mapel }}</td>
-                                <td>{{ $n->siswa->nama_siswa }}</td>
-                                <td>{{ $n->uh }}</td>
-                                <td>{{ $n->uts }}</td>
-                                <td>{{ $n->uas }}</td>
-                                <td>{{ $n->na }}</td>
-                            </tr>
-                        @endif
-                    @else
+                </tr>     
+                    @foreach ($nilai as $n)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $n->mengajar->guru->nama_guru }}</td>
@@ -50,13 +36,14 @@
                             <td>{{ $n->uts }}</td>
                             <td>{{ $n->uas }}</td>
                             <td>{{ $n->na }}</td>
-                            <td> 
-                                <a href="/nilai/edit/{{ $n->id }}" class="button-warning">EDIT</a>
-                                <a href="/nilai/destroy/{{ $n->id }}" class="button-danger" onclick="return confirm('Anda Akan Menghapus Data Ini?')">DELETE</a>
-                            </td>
+                            @if (session('user')->role == 'guru')
+                                <td> 
+                                    <a href="/nilai/edit/{{ $n->id }}" class="button-warning">EDIT</a>
+                                    <a href="/nilai/destroy/{{ $n->id }}" class="button-danger" onclick="return confirm('Anda Akan Menghapus Data Ini?')">DELETE</a>
+                                </td>
+                            @endif
                         </tr>
-                    @endif
-                @endforeach
+                    @endforeach
             </table>
         </b>
     </center>
